@@ -25,6 +25,22 @@ public class BST {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            System.out.println("The same object.");
+            return true;
+        }
+        if (!(obj instanceof BST)) {
+            return false;
+        }
+        BST t = (BST) obj;
+        if (this.length != t.length) {
+            return false;
+        }
+        return compare(root, t.root);
+    }
+
+    @Override
     public BST clone() {
         BST clonedTree = new BST();
         clonedTree.root = cloneNode(this.root);
@@ -90,7 +106,10 @@ public class BST {
     }
 
     public void remove(int value) {
-        root = remove(root, value);
+        if (find(value)) {
+            root = remove(root, value);
+            length--;
+        }
     }
 
     private Node remove(Node node, int value) {
@@ -123,6 +142,17 @@ public class BST {
         }
         return minValue;
     }
+
+    boolean compare(Node tmp1, Node tmp2) {
+        if (tmp1 == null && tmp2 == null) {
+            return true;
+        }
+        if (tmp1 == null || tmp2 == null) {
+            return false;
+        }
+        return (tmp1.value == tmp2.value) && compare(tmp1.left, tmp2.left) && compare(tmp1.right, tmp2.right);
+    }
+
 
     @Override
     public String toString() {
