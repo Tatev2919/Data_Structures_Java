@@ -63,7 +63,7 @@ class LinkedList{
 
     public void delete_node(int x){
         if (isEmpty()) {
-            return;
+            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot search for value " + x + ".");
         }
 
         Node temp = head;
@@ -101,8 +101,7 @@ class LinkedList{
 
     public int pop_back() {
         if (isEmpty()) {
-            System.out.println("The list is empty");
-            return -1;
+            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot pop the value . ");
         }
         int val = tail.value;
         if (head == tail) {
@@ -116,7 +115,7 @@ class LinkedList{
 
     public boolean remove(int index) {
         if (isEmpty()) {
-            return false;
+            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot search for value by index : " + index + ".");
         }
 
         Node temp = head;

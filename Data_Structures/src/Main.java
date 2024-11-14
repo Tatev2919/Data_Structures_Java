@@ -4,6 +4,11 @@ public class Main
     public static void main(String[] args) {
         System.out.println("Testing the LinkedList push_back function ----------");
         LinkedList l1 = new LinkedList();
+        try {
+            l1.pop_back();
+        } catch (LinkedListExceptions.EmptyLinkedListException e ) {
+            System.out.println(e.getMessage());
+        }
         l1.push_back(10);
         l1.push_back(20);
         l1.push_back(30);
