@@ -13,8 +13,7 @@ public class Queue {
     // Removes and returns the element at the front of the queue
     public int dequeue(){
         if (isEmpty()) {
-            System.out.println("The Queue is empty");
-            return -1;
+            throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
         int val = ll.get(1);
         ll.remove(1);
@@ -24,8 +23,7 @@ public class Queue {
     // Returns the element at the front of the queue without removing it
     public int peek(){
         if (isEmpty()) {
-            System.out.println("The Queue is empty");
-            return -1;
+            throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
         return ll.get(1);
     }

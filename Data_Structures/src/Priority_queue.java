@@ -37,8 +37,7 @@ public class Priority_queue {
     // Removes and returns the element at the front of the queue
     public int dequeue(){
         if (ll.isEmpty()) {
-            System.out.println("The Queue is empty");
-            return -1;
+            throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
         int val = ll.get(1);
         ll.remove(1);
@@ -48,8 +47,7 @@ public class Priority_queue {
     // Returns the element at the front of the queue without removing it
     public int peek(){
         if (isEmpty()) {
-            System.out.println("The Queue is empty");
-            return -1;
+            throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
         return ll.get(1);
     }

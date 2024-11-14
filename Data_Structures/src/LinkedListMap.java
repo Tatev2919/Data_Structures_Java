@@ -46,12 +46,12 @@ class LinkedListMap {
             }
             temp = temp.next;
         }
-        return null; // Key not found
+        throw new LinkedListMapExceptions.KeyNotFoundException(key);
     }
 
     public boolean remove(int key) {
         if (isEmpty()) {
-            return false;
+            throw new LinkedListMapExceptions.KeyNotFoundException(key);
         }
 
         Node temp = head;

@@ -59,12 +59,20 @@ public class BST {
     }
 
     public void add(int value) {
-        add(root,value);
+        if (is_empty()) {  // Directly add the first node if the tree is empty
+            root = new Node(value);
+            length++;
+        } else {
+            if (find(value)) {  // Check for duplicates only if the tree is not empty
+                throw new BSTExceptions.DuplicateNodeException("Value " + value + " already exists in the tree.");
+            }
+            add(root, value);
+        }
     }
 
     public boolean find(int value){
         if (is_empty()) {
-            return false;
+            throw new BSTExceptions.EmptyTreeException("The tree is empty, cannot search for value " + value + ".");
         } else {
             return find(root, value);
         }
@@ -84,6 +92,7 @@ public class BST {
     }
 
     private void add(Node tmp, int value) {
+
         Node new_node = new Node(value);
         if (root == null) {
             root = new_node;
@@ -106,7 +115,9 @@ public class BST {
     }
 
     public void remove(int value) {
-        if (find(value)) {
+        if (root == null || !find(value)) {
+            throw new BSTExceptions.NodeNotFoundException("Node with value " + value + " not found in the tree.");
+        } else {
             root = remove(root, value);
             length--;
         }

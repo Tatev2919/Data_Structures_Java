@@ -11,16 +11,14 @@ public class Stack {
 
     public int pop(){
         if (ll.isEmpty()) {
-            System.out.println("The Stack is empty");
-            return -1;
+            throw new StackEmptyException("The Stack is empty, cannot pop.");
         }
         return ll.pop_back();
     }
 
     public int peek(){
         if (ll.isEmpty()) {
-            System.out.println("The Stack is empty");
-            return -1;
+            throw new StackEmptyException("The Stack is empty, cannot get peek.");
         }
         return ll.get(1);
     }

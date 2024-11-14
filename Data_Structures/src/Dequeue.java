@@ -17,8 +17,7 @@ public class Dequeue {
     // Removes and returns the element at the front of the deque
     public int removeFront(){
         if (isEmpty()) {
-            System.out.println("The Dequeue is empty");
-            return -1;
+            throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
         int val = ll.get(1);
         ll.remove(1);
@@ -28,8 +27,7 @@ public class Dequeue {
     // Removes and returns the element at the back of the deque
     public int removeBack(){
         if (isEmpty()) {
-            System.out.println("The Dequeue is empty");
-            return -1;
+            throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
         return ll.pop_back();
     }
@@ -37,8 +35,7 @@ public class Dequeue {
     // Returns the element at the front of the deque without removing it
     public int peekFront(){
         if (isEmpty()) {
-            System.out.println("The Dequeue is empty");
-            return -1;
+            throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
         return ll.get(1);
     }
@@ -46,8 +43,7 @@ public class Dequeue {
     // Returns the element at the back of the deque without removing it
     public int peekBack(){
         if (isEmpty()) {
-            System.out.println("The Dequeue is empty");
-            return -1;
+            throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
         return ll.tail.value;
     }
