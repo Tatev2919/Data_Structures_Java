@@ -35,7 +35,7 @@ public class Priority_queue {
     }
 
     // Removes and returns the element at the front of the queue
-    public int dequeue(){
+    public int dequeue() throws LinkedListExceptions, LinkedListEmptyException {
         if (ll.isEmpty()) {
             throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
@@ -45,7 +45,7 @@ public class Priority_queue {
     }
 
     // Returns the element at the front of the queue without removing it
-    public int peek(){
+    public int peek() throws LinkedListExceptions {
         if (isEmpty()) {
             throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }

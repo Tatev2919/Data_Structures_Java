@@ -9,14 +9,14 @@ public class Stack {
         ll.push_back(x);
     }
 
-    public int pop(){
+    public int pop() throws LinkedListExceptions, LinkedListEmptyException {
         if (ll.isEmpty()) {
             throw new StackEmptyException("The Stack is empty, cannot pop.");
         }
         return ll.pop_back();
     }
 
-    public int peek(){
+    public int peek() throws LinkedListExceptions {
         if (ll.isEmpty()) {
             throw new StackEmptyException("The Stack is empty, cannot get peek.");
         }

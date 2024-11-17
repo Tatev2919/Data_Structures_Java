@@ -1,9 +1,9 @@
-public class LinkedListMapExceptions extends Exception {
+public class LinkedListEmptyException extends Exception {
     private String reason;
     private String solution;
     private String time_;
 
-    public LinkedListMapExceptions(String msg, String reason,String solution, String time_){
+    public LinkedListEmptyException(String msg, String reason,String solution, String time_){
         super(msg); // getMessage()-ov
 
         this.reason = reason;

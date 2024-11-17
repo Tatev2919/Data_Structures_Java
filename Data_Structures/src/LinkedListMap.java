@@ -38,7 +38,7 @@ class LinkedListMap {
         }
     }
 
-    public Integer get(int key) {
+    public Integer get(int key) throws LinkedListMapExceptions {
         Node temp = head;
         while (temp != null) {
             if (temp.key == key) {
@@ -46,12 +46,22 @@ class LinkedListMap {
             }
             temp = temp.next;
         }
-        throw new LinkedListMapExceptions.KeyNotFoundException(key);
+        throw new LinkedListMapExceptions(
+                "The key out of bound",
+                " ",
+                "get elements for only existing key",
+                "Nov 14 .."
+        );
     }
 
-    public boolean remove(int key) {
+    public boolean remove(int key) throws LinkedListMapExceptions {
         if (isEmpty()) {
-            throw new LinkedListMapExceptions.KeyNotFoundException(key);
+            throw new LinkedListMapExceptions(
+                    "The empty Map",
+                    " ",
+                    "remove elements for only not empty map",
+                    "Nov 14 .."
+            );
         }
 
         Node temp = head;

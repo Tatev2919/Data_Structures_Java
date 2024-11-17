@@ -61,9 +61,14 @@ class LinkedList{
         }
     }
 
-    public void delete_node(int x){
+    public void delete_node(int x) throws LinkedListEmptyException {
         if (isEmpty()) {
-            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot search for value " + x + ".");
+            throw new LinkedListEmptyException(
+                    "The LinkedList is empty",
+                    "There is no added elements and can't delete",
+                    "Use delete function for not empty LinkedList",
+                    "Nov14, 23:35"
+            );
         }
 
         Node temp = head;
@@ -88,20 +93,48 @@ class LinkedList{
         }
     }
 
-    public int get(int index) {
+    public int get(int index) throws LinkedListExceptions {
+        int start = 0;
+        int end = size() - 1; // Assuming you have a size() method that returns the size of the list
+
+        if (isEmpty()) {
+            throw new LinkedListExceptions(
+                    "The LinkedList is empty",
+                    "Cannot retrieve elements from an empty list",
+                    "Add elements to the LinkedList before trying to access them",
+                    "Nov14, 23:50",
+                    start, end, index
+            );
+        }
+
         Node temp = head;
-        int i = 1;
-        while ( temp!= null && i !=index ) {
+        int i = start;
+        while (temp != null && i != index) {
             temp = temp.next;
             i++;
         }
-        assert temp != null;
+
+        if (temp == null) { // Index is out of bounds
+            throw new LinkedListExceptions(
+                    "Index out of bounds",
+                    "The provided index does not exist in the LinkedList",
+                    "Ensure the index is within the size of the LinkedList",
+                    "Nov14, 23:50",
+                    start, end, index
+            );
+        }
+
         return temp.value;
     }
 
-    public int pop_back() {
+    public int pop_back() throws LinkedListEmptyException {//checked exception
         if (isEmpty()) {
-            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot pop the value . ");
+            throw new LinkedListEmptyException(
+                    "The LinkedList is empty",
+                    "There is no added elements",
+                    "Use pop function for not empty LinkedList",
+                    "Nov14, 23:35"
+            );
         }
         int val = tail.value;
         if (head == tail) {
@@ -113,9 +146,14 @@ class LinkedList{
         return val;
     }
 
-    public boolean remove(int index) {
+    public boolean remove(int index) throws LinkedListEmptyException {
         if (isEmpty()) {
-            throw new LinkedListExceptions.EmptyLinkedListException("The tree is empty, cannot search for value by index : " + index + ".");
+            throw new LinkedListEmptyException(
+                    "The LinkedList is empty",
+                    "There is no added elements",
+                    "Use remove for not empty LinkedList",
+                    "Nov14, 23:18"
+            );
         }
 
         Node temp = head;

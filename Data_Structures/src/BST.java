@@ -58,21 +58,31 @@ public class BST {
         return newNode;
     }
 
-    public void add(int value) {
+    public void add(int value) throws BSTExceptions {
         if (is_empty()) {  // Directly add the first node if the tree is empty
             root = new Node(value);
             length++;
         } else {
             if (find(value)) {  // Check for duplicates only if the tree is not empty
-                throw new BSTExceptions.DuplicateNodeException("Value " + value + " already exists in the tree.");
+                throw new BSTExceptions(
+                        "There has been added such element",
+                        " ",
+                        "",
+                        "Nov14, 23:18"
+                );
             }
             add(root, value);
         }
     }
 
-    public boolean find(int value){
+    public boolean find(int value) throws BSTExceptions {
         if (is_empty()) {
-            throw new BSTExceptions.EmptyTreeException("The tree is empty, cannot search for value " + value + ".");
+            throw new BSTExceptions(
+                    "Empty BST",
+                    "Not added elements",
+                    "Use find only if BST is not empty",
+                    "Nov14, 23:18"
+            );
         } else {
             return find(root, value);
         }
@@ -114,9 +124,14 @@ public class BST {
         }
     }
 
-    public void remove(int value) {
+    public void remove(int value) throws BSTExceptions {
         if (root == null || !find(value)) {
-            throw new BSTExceptions.NodeNotFoundException("Node with value " + value + " not found in the tree.");
+            throw new BSTExceptions(
+                    "Empty BST",
+                    "Not added elements",
+                    "Use remove only if BST is not empty",
+                    "Nov14, 23:18"
+            );
         } else {
             root = remove(root, value);
             length--;

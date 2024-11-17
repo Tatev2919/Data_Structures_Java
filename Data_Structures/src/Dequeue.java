@@ -15,7 +15,7 @@ public class Dequeue {
     }
 
     // Removes and returns the element at the front of the deque
-    public int removeFront(){
+    public int removeFront() throws LinkedListExceptions, LinkedListEmptyException {
         if (isEmpty()) {
             throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
@@ -25,7 +25,7 @@ public class Dequeue {
     }
 
     // Removes and returns the element at the back of the deque
-    public int removeBack(){
+    public int removeBack() throws LinkedListExceptions, LinkedListEmptyException {
         if (isEmpty()) {
             throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }
@@ -33,7 +33,7 @@ public class Dequeue {
     }
 
     // Returns the element at the front of the deque without removing it
-    public int peekFront(){
+    public int peekFront() throws LinkedListExceptions {
         if (isEmpty()) {
             throw new IllegalStateException("The DeQueue is empty, cannot dequeue.");
         }

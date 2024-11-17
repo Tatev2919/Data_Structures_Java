@@ -1,13 +1,19 @@
 //Stack, Queue, Deque isEmpty, toString clone(), class Map,  BinarySearchTree, PriorityQueue(on LinkedList) , JVM
 public class Main
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LinkedListExceptions, BSTExceptions, LinkedListMapExceptions, LinkedListEmptyException {
         System.out.println("Testing the LinkedList push_back function ----------");
         LinkedList l1 = new LinkedList();
         try {
-            l1.pop_back();
-        } catch (LinkedListExceptions.EmptyLinkedListException e ) {
-            System.out.println(e.getMessage());
+            l1.get(3);
+            l1.pop_back(); // new LinkedException()
+            l1.get(1);
+        } catch (LinkedListEmptyException e ) { //unreachable code
+            System.out.println(e);
+        } catch (LinkedListExceptions e) {
+            System.out.println(e);
+        } catch (Exception k){
+            System.out.println(k);
         }
         l1.push_back(10);
         l1.push_back(20);
@@ -158,8 +164,15 @@ public class Main
         p_q.dequeue();
         System.out.println("Printing the priority dequeue: " + p_q);
 
+
+        System.out.println("-----------------------Map-------------------------");
         System.out.println("Testing the Map functions--------------");
         LinkedListMap m = new LinkedListMap();
+        try {
+            m.get(10);
+        } catch (LinkedListMapExceptions e ) {
+            System.out.println(e.toString());
+        }
         m.add(5,1);
         m.add(6,2);
         m.add(7,3);
@@ -167,18 +180,20 @@ public class Main
         m.remove(5);
         System.out.println("LinkedlistMap is : " + m);
 
+
+        System.out.println("-----------------------BST-------------------------");
         BST b = new BST();
         try {
             b.find(5);
-        } catch (BSTExceptions.EmptyTreeException e) {
-            System.out.println(e.getMessage());
+        } catch (BSTExceptions e) {
+            System.out.println(e.toString());
         }
         b.add(1);
         b.add(3);
         try {
             b.add(3);
-        } catch (BSTExceptions.DuplicateNodeException e) {
-            System.out.println(e.getMessage());
+        } catch (BSTExceptions e) {
+            System.out.println(e.toString());
         }
         b.add(27);
         b.add(34);
@@ -194,8 +209,8 @@ public class Main
         System.out.println("The tree is ========= " + b);
         try {
             b.remove(3);
-        } catch (BSTExceptions.NodeNotFoundException e) {
-            System.out.println(e.getMessage());
+        } catch (BSTExceptions e) {
+            System.out.println(e.toString());
         }
 
         BST b1 = b.clone();
@@ -208,6 +223,6 @@ public class Main
         b1 = b.clone();
         System.out.println(b1.equals(b));
         //System.out.println("Updated version " + b1);
-        // System.out.println("Original version " + b);
+        // System.out.println("Original version " + b);*/
     }
 }

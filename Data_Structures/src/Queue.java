@@ -11,17 +11,17 @@ public class Queue {
     }
 
     // Removes and returns the element at the front of the queue
-    public int dequeue(){
+    public int dequeue() throws LinkedListExceptions, LinkedListEmptyException {
         if (isEmpty()) {
             throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
-        int val = ll.get(1);
+        int val = ll.get(0);
         ll.remove(1);
         return val;
     }
 
     // Returns the element at the front of the queue without removing it
-    public int peek(){
+    public int peek() throws LinkedListExceptions {
         if (isEmpty()) {
             throw new IllegalStateException("The Queue is empty, cannot dequeue.");
         }
